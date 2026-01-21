@@ -15,10 +15,13 @@ export default async function handler(req, res) {
     const response = await fetch("https://kkutudic.pythonanywhere.com/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "X-Requested-With": "XMLHttpRequest",
         "Accept": "*/*"
       },
-      body: new URLSearchParams(req.body)
+      body: new URLSearchParams(req.body),
+      cache: "no-store",
+      credentials: "same-origin"
     });
 
     const data = await response.json();
